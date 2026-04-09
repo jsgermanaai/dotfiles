@@ -1,0 +1,17 @@
+# SSH Configuration for Multiple GitHub Accounts
+
+# AuditIdentity Business Account
+Host github.com-auditidentity
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_auditidentity
+    IdentitiesOnly yes
+    AddKeysToAgent yes
+
+# Personal GitHub Account (default)
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+    AddKeysToAgent yes

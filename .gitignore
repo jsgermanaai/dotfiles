@@ -1,0 +1,23 @@
+# Secrets — never commit
+*.local
+.zshrc.local
+.env
+.env.*
+
+# SSH private keys
+ssh/id_*
+ssh/known_hosts
+ssh/authorized_keys
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor state
+*.swp
+*.swo
+*~
+.nvim/undo/
+
+# Homebrew lock
+Brewfile.lock.json

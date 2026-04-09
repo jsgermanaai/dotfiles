@@ -1,0 +1,19 @@
+# AuditIdentity Business Account Configuration
+
+[user]
+    name = Jay German
+    email = jay@auditidentity.com
+
+[core]
+    sshCommand = ssh -i ~/.ssh/id_ed25519_auditidentity
+
+[url "github.com-auditidentity:"]
+    insteadOf = git@github.com:
+
+# Optional: Enhanced security settings for business repos
+[push]
+    default = simple
+    followTags = true
+
+[pull]
+    rebase = false
