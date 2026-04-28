@@ -63,7 +63,7 @@ fi
 
 if [ -f "$DOTFILES/Brewfile" ]; then
     info "Installing Homebrew packages..."
-    brew bundle --file="$DOTFILES/Brewfile" --no-lock
+    brew bundle --file="$DOTFILES/Brewfile"
 fi
 
 # ── oh-my-zsh ────────────────────────────────────────────────────

@@ -51,7 +51,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 # Custom scripts
