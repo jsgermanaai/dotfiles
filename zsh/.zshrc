@@ -141,8 +141,9 @@ alias git-whoami='echo "Name: $(git config user.name)" && echo "Email: $(git con
 alias git-test-ai='echo "Testing AuditIdentity config..." && cd ~/work && mkdir -p test && cd test && git init &>/dev/null && git config user.email && cd .. && rm -rf test'
 
 # ─── Machine-local secrets / private aliases ───────────────────
-# Azure/AKS switchers and other work-only aliases live in
-# ~/.zshrc.local (gitignored, never committed).
+# Azure/AKS switchers, cloud subscription/tenant IDs, and other
+# work-only aliases live in ~/.zshrc.local (gitignored). It is
+# sourced near the end of this file so it can override anything above.
 
 # Pretty-print non-Running pods across all namespaces with reasons + colors
 alias kbadpods="kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.status.phase != \"Running\" or (.status.containerStatuses[]? | select(.state.waiting.reason != null))) | \"NS:[90m \(.metadata.namespace)[0m\nPOD:[90m \(.metadata.name)[0m\nPHASE:[33m \(.status.phase)[0m\n\" + ([.status.containerStatuses[]? | \"  [34mContainer:[0m \(.name)\n    [36mState:[0m \(.state | tojson)\n    [36mRestarts:[0m \(.restartCount)\"] | join(\"\n\")) + \"\n[90m\" + (\"-\" * 60) + \"[0m\"' | sed -E -e 's/(CrashLoopBackOff|ImagePullBackOff|Error)/\x1b[31m\1\x1b[0m/g' -e 's/(Pending)/\x1b[33m\1\x1b[0m/g' -e 's/(Restarts: [5-9])/\x1b[33m\1\x1b[0m/g'"
