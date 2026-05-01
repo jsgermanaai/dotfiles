@@ -118,21 +118,26 @@ A 3-line cobalt + magenta starship prompt with right-aligned battery + clock. Ev
 
 ### Anatomy
 
-```
-   ┌── Line 1 ─────────────────────────────────────────────────────┐
+```text
+# Line 1 (left format)                                  + right_format
 ╭─  ~/work/dotfiles   on   main !8 ?15           🐳   [bat]  [time]
    │                  │    │                      │      │     │
-   │                  │    └─ git_branch + status │      │     └─ time
-   │                  └─ "on" literal             │      └─ battery
-   │                                              └─ colima (🐳 if running)
+   │                  │    │                      │      │     └─ time
+   │                  │    │                      │      └─ battery
+   │                  │    │                      └─ colima (🐳 if running)
+   │                  │    └─ git_branch + status
+   │                  └─ "on" literal
    └─ directory
-   ┌── Line 2 ─────────────────────────────────────────────────────┐
+
+# Line 2
 │  ⎈ aks-prod (default)  󰠅 Armada-Prod   3.12.1 (venv)  took 4s
 │   │                    │              │              │
-│   └─ kubernetes        │              │              └─ cmd_duration
-│                        │              └─ python
-│                        └─ azure
-   ┌── Line 3 ─────────────────────────────────────────────────────┐
+│   │                    │              │              └─ cmd_duration
+│   │                    │              └─ python
+│   │                    └─ azure
+│   └─ kubernetes
+
+# Line 3
 ╰─❯
    └─ character
 ```

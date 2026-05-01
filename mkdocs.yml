@@ -1,7 +1,7 @@
 site_name: dotfiles
 site_description: A neon-cobalt + magenta development environment for macOS
 site_author: Jay German
-site_url: ""
+site_url: "https://jsgermanaai.github.io/dotfiles/"
 
 # Use the docs/ directory as the source for the site.
 docs_dir: docs

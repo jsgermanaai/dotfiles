@@ -225,17 +225,20 @@ if false && [ -s "$WORK/tmux.ans" ]; then
     cat "$WORK/tmux.ans" | freeze "${COMMON[@]}" --output "$OUT/tmux.png"
 else
     {
-        # Pane 1 (left): editor
-        printf "${C_GREY}┌─ pane 1: editor ────────────────┐${R}  ${C_MAGENTA}┌─ pane 2: shell ───────────────────────┐${R}\n"
-        printf "${C_GREY}│${R} ${C_MAGENTA}${B}package${R} handler                   ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}${B}~/.dotfiles${R} ${C_COBALT}❯${R} ll                   ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}│${R}                                  ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}drwxr-xr-x${R} bat                       ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}│${R} ${C_MAGENTA}${B}func${R} ${C_COBALT}${B}Process${R}(ctx context.Ctx, ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}drwxr-xr-x${R} docs                      ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}│${R}     evt Event) ${C_CYAN}error${R} {        ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}drwxr-xr-x${R} git                       ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}│${R}     ${C_MAGENTA}${B}return${R} process(ctx, evt)  ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_GREY}-rwxr-xr-x${R} install.sh                ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}│${R} }                                ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_GREEN}-rw-r--r--${R} README.md                 ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}│${R}                                  ${C_GREY}│${R}  ${C_MAGENTA}│${R}                                       ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}│${R}                                  ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}${B}~/.dotfiles${R} ${C_COBALT}❯${R} █                    ${C_MAGENTA}│${R}\n"
-        printf "${C_GREY}└──────────────────────────────────┘${R}  ${C_MAGENTA}└───────────────────────────────────────┘${R}\n"
+        # Two boxed panes side-by-side. Inner widths are fixed to keep the right
+        # `│` and bottom `└─┘` aligned across every row.
+        #   Pane 1 (editor): inner = 36 chars  → header has 19 dashes after title
+        #   Pane 2 (shell):  inner = 39 chars  → header has 23 dashes after title
+        printf "${C_GREY}┌─ pane 1: editor ───────────────────┐${R}  ${C_MAGENTA}┌─ pane 2: shell ───────────────────────┐${R}\n"
+        printf "${C_GREY}│${R} ${C_MAGENTA}${B}package${R} handler                    ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}${B}~/.dotfiles${R} ${C_COBALT}❯${R} ll                      ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}│${R}                                    ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}drwxr-xr-x${R} bat                        ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}│${R} ${C_MAGENTA}${B}func${R} ${C_COBALT}${B}Process${R}(ctx context.Ctx,      ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}drwxr-xr-x${R} docs                       ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}│${R}     evt Event) ${C_CYAN}error${R} {             ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}drwxr-xr-x${R} git                        ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}│${R}     ${C_MAGENTA}${B}return${R} process(ctx, evt)       ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_GREY}-rwxr-xr-x${R} install.sh                 ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}│${R} }                                  ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_GREEN}-rw-r--r--${R} README.md                  ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}│${R}                                    ${C_GREY}│${R}  ${C_MAGENTA}│${R}                                       ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}│${R}                                    ${C_GREY}│${R}  ${C_MAGENTA}│${R} ${C_COBALT}${B}~/.dotfiles${R} ${C_COBALT}❯${R} █                       ${C_MAGENTA}│${R}\n"
+        printf "${C_GREY}└────────────────────────────────────┘${R}  ${C_MAGENTA}└───────────────────────────────────────┘${R}\n"
         printf "\n"
         # Status bar — exact replica of what .tmux.conf produces
         printf "\033[48;2;45;91;255m\033[38;2;0;0;0m\033[1m dev \033[0m\033[48;2;10;10;20m\033[38;2;45;91;255m\033[0m\033[48;2;10;10;20m\033[38;2;224;224;238m 1:1 \033[0m\033[48;2;0;0;0m\033[38;2;10;10;20m\033[0m  \033[48;2;10;10;20m\033[38;2;224;224;238m 1 dotfiles \033[0m\033[48;2;45;91;255m\033[38;2;10;10;20m\033[0m\033[48;2;45;91;255m\033[38;2;0;0;0m\033[1m 2 nvim \033[0m\033[48;2;0;0;0m\033[38;2;45;91;255m\033[0m \033[48;2;10;10;20m\033[38;2;224;224;238m 3 logs \033[0m                       \033[48;2;245;158;11m\033[38;2;0;0;0m\033[1m ⌘ Wait \033[0m\033[48;2;0;0;0m\033[38;2;10;10;20m\033[0m\033[48;2;10;10;20m\033[38;2;224;224;238m 2026-05-01 \033[0m\033[48;2;255;31;231m\033[38;2;0;0;0m\033[1m 14:32 \033[0m\n"
