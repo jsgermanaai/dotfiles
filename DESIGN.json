@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-01T00:00:00Z",
+  "title": "Design System: dotfiles",
+  "extensions": {
+    "colorMeta": {
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Cobalt",
+        "canonical": "oklch(0.55 0.27 264)",
+        "tonalRamp": [
+          "oklch(0.18 0.10 264)",
+          "oklch(0.28 0.18 264)",
+          "oklch(0.38 0.24 264)",
+          "oklch(0.49 0.27 263)",
+          "oklch(0.55 0.27 264)",
+          "oklch(0.62 0.20 256)",
+          "oklch(0.78 0.13 256)",
+          "oklch(0.92 0.05 256)"
+        ]
+      },
+      "cobalt-light": {
+        "role": "primary",
+        "displayName": "Cobalt Light",
+        "canonical": "oklch(0.62 0.20 256)"
+      },
+      "cobalt-deep": {
+        "role": "primary",
+        "displayName": "Cobalt Deep",
+        "canonical": "oklch(0.49 0.27 263)"
+      },
+      "magenta": {
+        "role": "secondary",
+        "displayName": "Magenta",
+        "canonical": "oklch(0.69 0.34 326)",
+        "tonalRamp": [
+          "oklch(0.20 0.12 326)",
+          "oklch(0.32 0.22 326)",
+          "oklch(0.45 0.30 326)",
+          "oklch(0.58 0.34 326)",
+          "oklch(0.69 0.34 326)",
+          "oklch(0.78 0.26 326)",
+          "oklch(0.87 0.16 326)",
+          "oklch(0.95 0.06 326)"
+        ]
+      },
+      "magenta-soft": {
+        "role": "secondary",
+        "displayName": "Magenta Soft",
+        "canonical": "oklch(0.65 0.24 320)"
+      },
+      "purple": {
+        "role": "secondary",
+        "displayName": "Purple",
+        "canonical": "oklch(0.74 0.16 295)"
+      },
+      "cyan": {
+        "role": "tertiary",
+        "displayName": "Cyan",
+        "canonical": "oklch(0.80 0.16 200)"
+      },
+      "green": {
+        "role": "tertiary",
+        "displayName": "Green",
+        "canonical": "oklch(0.83 0.21 156)"
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Amber",
+        "canonical": "oklch(0.73 0.17 65)"
+      },
+      "yellow": {
+        "role": "tertiary",
+        "displayName": "Yellow",
+        "canonical": "oklch(0.83 0.16 84)"
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Red",
+        "canonical": "oklch(0.66 0.23 22)"
+      },
+      "grey": {
+        "role": "neutral",
+        "displayName": "Grey",
+        "canonical": "oklch(0.51 0.025 254)"
+      },
+      "fg": {
+        "role": "neutral",
+        "displayName": "Foreground",
+        "canonical": "oklch(0.91 0.013 280)"
+      },
+      "carbon-pure": {
+        "role": "neutral",
+        "displayName": "Carbon Pure",
+        "canonical": "oklch(0 0 0)",
+        "tonalRamp": [
+          "oklch(0 0 0)",
+          "oklch(0.07 0.02 280)",
+          "oklch(0.13 0.04 281)",
+          "oklch(0.18 0.06 282)",
+          "oklch(0.30 0.04 280)",
+          "oklch(0.51 0.025 254)",
+          "oklch(0.74 0.018 270)",
+          "oklch(0.91 0.013 280)"
+        ]
+      },
+      "carbon-elevated": {
+        "role": "neutral",
+        "displayName": "Carbon Elevated",
+        "canonical": "oklch(0.07 0.02 280)"
+      },
+      "carbon-active": {
+        "role": "neutral",
+        "displayName": "Carbon Active",
+        "canonical": "oklch(0.18 0.06 282)"
+      },
+      "linenr-dim": {
+        "role": "neutral",
+        "displayName": "Line Number Dim",
+        "canonical": "oklch(0.34 0.04 282)"
+      }
+    },
+    "typographyMeta": {
+      "terminal": {
+        "displayName": "Terminal",
+        "purpose": "Default terminal type. JetBrainsMono Nerd Font for full glyph coverage. The single TUI typographic register."
+      },
+      "terminal-bold": {
+        "displayName": "Terminal Bold",
+        "purpose": "Bold terminal weight for cobalt/magenta accent segments — directory, branch, prompt character, ccstatusline cwd + branch."
+      },
+      "docs-body": {
+        "displayName": "Docs Body",
+        "purpose": "mkdocs-material default body type (Roboto). Untouched; only color cascades from the palette."
+      },
+      "docs-heading": {
+        "displayName": "Docs Heading",
+        "purpose": "mkdocs-material default heading scale, untouched."
+      },
+      "docs-mono": {
+        "displayName": "Docs Mono",
+        "purpose": "mkdocs-material default code face (Roboto Mono). NOT JetBrainsMono Nerd Font — the docs site does not need glyph coverage."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-low",
+        "value": "0 1px 2px rgba(0, 0, 0, 0.6)",
+        "purpose": "Subtle depth on inline cards and admonition lifts on the docs site. Used at rest. Forbidden in any TUI surface."
+      },
+      {
+        "name": "shadow-med",
+        "value": "0 8px 24px -8px rgba(0, 0, 0, 0.7)",
+        "purpose": "Hover lift on cards in the palette / prompt walkthrough pages on the docs site. Adds a sense of 'you're acting on this.'"
+      },
+      {
+        "name": "shadow-magenta-glow",
+        "value": "0 0 0 1px #FF1FE7, 0 0 16px rgba(255, 31, 231, 0.35)",
+        "purpose": "Reserved for focused inputs and active tabs on the docs site. The 1-px magenta ring is structural focus; the 16-px glow is synthwave atmosphere. Forbidden on cards or large surfaces — the glow loses meaning at scale."
+      },
+      {
+        "name": "shadow-cobalt-pop",
+        "value": "0 0 12px rgba(45, 91, 255, 0.4)",
+        "purpose": "Reserved for the docs-site hero or feature image (palette swatch grid, prompt screenshot). Atmospheric only, not interactive. At most once or twice per page."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Link color transitions, focus state changes on the docs site."
+      },
+      {
+        "name": "duration-state",
+        "value": "200ms",
+        "purpose": "Card hover transitions on the docs site, mkdocs-material default state changes."
+      },
+      {
+        "name": "ease-state",
+        "value": "ease-in-out",
+        "purpose": "Default easing for state transitions. Linear or ease-in-out only — no spring, no bounce."
+      },
+      {
+        "name": "starship-frame",
+        "value": "static (no animation)",
+        "purpose": "The 3-line starship prompt frame is rendered statically. Terminal animations are deliberately absent."
+      }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "768px" },
+      { "name": "desktop", "value": "1220px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Starship Prompt Segment",
+      "kind": "custom",
+      "refersTo": "prompt-segment-cobalt",
+      "description": "A two-line excerpt of the 3-line starship prompt: directory in bold cobalt, git branch + status in magenta, prompt character in bold cobalt. Frame in grey.",
+      "html": "<pre class=\"ds-prompt\"><span class=\"ds-prompt-frame\">╭─ </span><span class=\"ds-prompt-dir\">  code/dotfiles </span><span class=\"ds-prompt-branch\"> on  main</span> <span class=\"ds-prompt-status\">!2 +1</span>\n<span class=\"ds-prompt-frame\">│ </span>\n<span class=\"ds-prompt-frame\">╰─</span><span class=\"ds-prompt-char\">❯</span> <span class=\"ds-prompt-caret\">█</span></pre>",
+      "css": ".ds-prompt { margin: 0; padding: 16px 20px; background: #000000; color: #e0e0ee; font-family: 'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.4; white-space: pre; } .ds-prompt-frame { color: #6b7280; } .ds-prompt-dir { color: #2D5BFF; font-weight: 700; } .ds-prompt-branch { color: #FF1FE7; } .ds-prompt-status { color: #FF1FE7; } .ds-prompt-char { color: #2D5BFF; font-weight: 700; } .ds-prompt-caret { display: inline-block; color: #2D5BFF; animation: ds-blink 1.1s steps(1) infinite; } @keyframes ds-blink { 50% { opacity: 0; } }"
+    },
+    {
+      "name": "ccstatusline Powerline Row",
+      "kind": "nav",
+      "refersTo": "ccstatusline-cwd",
+      "description": "Excerpt of the ccstatusline powerline statusline: model badge (cobalt) → thinking-effort (magenta) → context-length (grey) → context-percentage (amber). Each segment uses carbon-elevated as foreground over the colored block.",
+      "html": "<div class=\"ds-cc\"><span class=\"ds-cc-seg ds-cc-model\">opus 4.7</span><span class=\"ds-cc-arrow ds-cc-arrow-cobalt-magenta\"></span><span class=\"ds-cc-seg ds-cc-think\">thinking</span><span class=\"ds-cc-arrow ds-cc-arrow-magenta-grey\"></span><span class=\"ds-cc-seg ds-cc-ctx\">128k</span><span class=\"ds-cc-arrow ds-cc-arrow-grey-amber\"></span><span class=\"ds-cc-seg ds-cc-pct\">42%</span><span class=\"ds-cc-arrow ds-cc-arrow-amber-empty\"></span></div>",
+      "css": ".ds-cc { display: inline-flex; align-items: center; font-family: 'JetBrainsMono Nerd Font', monospace; font-size: 13px; background: #000000; padding: 12px; } .ds-cc-seg { padding: 2px 10px; color: #0a0a14; font-weight: 700; } .ds-cc-model { background: #2D5BFF; } .ds-cc-think { background: #FF1FE7; } .ds-cc-ctx { background: #6b7280; color: #e0e0ee; font-weight: 400; } .ds-cc-pct { background: #F59E0B; } .ds-cc-arrow { width: 0; height: 0; border-style: solid; border-width: 12px 0 12px 10px; border-color: transparent; } .ds-cc-arrow-cobalt-magenta { border-left-color: #2D5BFF; background: #FF1FE7; } .ds-cc-arrow-magenta-grey { border-left-color: #FF1FE7; background: #6b7280; } .ds-cc-arrow-grey-amber { border-left-color: #6b7280; background: #F59E0B; } .ds-cc-arrow-amber-empty { border-left-color: #F59E0B; }"
+    },
+    {
+      "name": "lazygit Active Pane",
+      "kind": "card",
+      "refersTo": "lazygit-active-pane",
+      "description": "Active lazygit pane: 1px magenta border, transparent bg over carbon-pure canvas, fg text. Inactive panes use a grey border (not shown).",
+      "html": "<div class=\"ds-lazygit\"><header class=\"ds-lazygit-head\">Files</header><ul class=\"ds-lazygit-list\"><li><span class=\"ds-lazygit-glyph ds-lazygit-mod\">M</span> nvim/lua/plugins/colorscheme.lua</li><li><span class=\"ds-lazygit-glyph ds-lazygit-add\">A</span> docs/palette.md</li><li><span class=\"ds-lazygit-glyph ds-lazygit-mod\">M</span> zsh/starship.toml</li></ul></div>",
+      "css": ".ds-lazygit { background: #000000; border: 1px solid #FF1FE7; padding: 12px 16px; font-family: 'JetBrainsMono Nerd Font', monospace; font-size: 13px; color: #e0e0ee; min-width: 320px; } .ds-lazygit-head { color: #FF1FE7; font-weight: 700; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #1a1a3e; } .ds-lazygit-list { list-style: none; padding: 0; margin: 0; line-height: 1.6; } .ds-lazygit-glyph { display: inline-block; width: 16px; font-weight: 700; } .ds-lazygit-mod { color: #FF4D4D; } .ds-lazygit-add { color: #22EE99; }"
+    },
+    {
+      "name": "nvim Float Border",
+      "kind": "card",
+      "refersTo": "nvim-float-border",
+      "description": "An nvim Telescope or floating window: 1px magenta border, carbon-elevated background, mono prompt with magenta accents.",
+      "html": "<div class=\"ds-nvim-float\"><div class=\"ds-nvim-prompt\">❯ component</div><ul class=\"ds-nvim-results\"><li class=\"ds-nvim-result is-selected\">colorscheme.lua</li><li class=\"ds-nvim-result\">go-development.lua</li><li class=\"ds-nvim-result\">productivity.lua</li><li class=\"ds-nvim-result\">ai.lua</li></ul></div>",
+      "css": ".ds-nvim-float { background: #0a0a14; border: 1px solid #FF1FE7; padding: 12px; font-family: 'JetBrainsMono Nerd Font', monospace; font-size: 13px; color: #e0e0ee; min-width: 280px; } .ds-nvim-prompt { color: #FF1FE7; font-weight: 700; padding: 4px 0; border-bottom: 1px solid #1a1a3e; margin-bottom: 8px; } .ds-nvim-results { list-style: none; padding: 0; margin: 0; line-height: 1.7; } .ds-nvim-result { padding: 0 4px; } .ds-nvim-result.is-selected { background: #1a1a3e; color: #2D5BFF; font-weight: 700; }"
+    },
+    {
+      "name": "mkdocs Link",
+      "kind": "custom",
+      "refersTo": "mkdocs-link",
+      "description": "An inline link on the docs site: cobalt text by default, magenta + wavy magenta underline on hover.",
+      "html": "<p class=\"ds-mk-prose\">See the <a href=\"#\" class=\"ds-mk-link\">palette page</a> for the canonical hex values.</p>",
+      "css": ".ds-mk-prose { font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 1.6; color: #e0e0ee; background: #000000; padding: 16px; margin: 0; } .ds-mk-link { color: #2D5BFF; text-decoration: none; border-bottom: 1px solid transparent; transition: color 150ms ease-in-out; } .ds-mk-link:hover { color: #FF1FE7; text-decoration: underline wavy #FF1FE7; }"
+    },
+    {
+      "name": "mkdocs Admonition (default)",
+      "kind": "card",
+      "refersTo": "mkdocs-admonition-default",
+      "description": "A default mkdocs-material admonition with cobalt left border. Warning variants use magenta instead.",
+      "html": "<aside class=\"ds-mk-admonition\"><header class=\"ds-mk-admonition-head\">Note</header><p class=\"ds-mk-admonition-body\">The cobalt + magenta values come from <code class=\"ds-mk-code\">zsh/starship.toml</code>. Drift between consumers and starship is the bug.</p></aside>",
+      "css": ".ds-mk-admonition { background: #0a0a14; border: 1px solid #1a1a3e; border-left: 4px solid #2D5BFF; border-radius: 2px; padding: 14px 16px; font-family: 'Roboto', sans-serif; color: #e0e0ee; box-shadow: 0 1px 2px rgba(0,0,0,0.6); } .ds-mk-admonition-head { font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: #2D5BFF; margin: 0 0 6px 0; } .ds-mk-admonition-body { font-size: 16px; line-height: 1.6; margin: 0; } .ds-mk-code { font-family: 'Roboto Mono', monospace; background: #000000; border: 1px solid rgba(45, 91, 255, 0.3); padding: 1px 6px; border-radius: 2px; font-size: 14px; }"
+    },
+    {
+      "name": "mkdocs Code Block",
+      "kind": "custom",
+      "refersTo": "mkdocs-code-block",
+      "description": "A code block on the docs site: carbon-elevated background, 1-px cobalt border at 30% alpha, Roboto Mono.",
+      "html": "<pre class=\"ds-mk-pre\"><code class=\"ds-mk-pre-code\">[palettes.cobalt]\ncobalt   = \"#2D5BFF\"\nmagenta  = \"#FF1FE7\"\ngrey     = \"#6b7280\"\nfg       = \"#e0e0ee\"</code></pre>",
+      "css": ".ds-mk-pre { background: #0a0a14; border: 1px solid rgba(45, 91, 255, 0.3); border-radius: 2px; padding: 12px 16px; margin: 0; overflow-x: auto; box-shadow: 0 1px 2px rgba(0,0,0,0.6); } .ds-mk-pre-code { font-family: 'Roboto Mono', monospace; font-size: 14px; line-height: 1.5; color: #e0e0ee; }"
+    },
+    {
+      "name": "mkdocs Focused Search Input",
+      "kind": "input",
+      "refersTo": "mkdocs-link",
+      "description": "A docs-site search input in focused state. Demonstrates the magenta-glow shadow — 1-px structural ring + 16-px synthwave halo.",
+      "html": "<label class=\"ds-mk-search-label\"><svg class=\"ds-mk-search-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4.35-4.35\"/></svg><input class=\"ds-mk-search-input\" type=\"search\" placeholder=\"Search the system\" value=\"cobalt\" /></label>",
+      "css": ".ds-mk-search-label { display: inline-flex; align-items: center; gap: 8px; padding: 0 12px; background: #0a0a14; border-radius: 2px; box-shadow: 0 0 0 1px #FF1FE7, 0 0 16px rgba(255, 31, 231, 0.35); } .ds-mk-search-icon { color: #FF1FE7; flex-shrink: 0; } .ds-mk-search-input { background: transparent; border: 0; outline: 0; color: #e0e0ee; font-family: 'Roboto', sans-serif; font-size: 14px; padding: 10px 0; min-width: 240px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cobalt-and-Magenta Flight Deck",
+    "overview": "Each statusline, prompt line, tmux row, and mkdocs page is a row of instruments. Cobalt and magenta are not background atmosphere — they are runtime channels. Cobalt anchors where you are (directory, k8s context, model name, working dir segment). Magenta carries what's happening (git branch and status, command failure, focused element, active state). The rest of the palette is a small set of additional channels (cyan = k8s/golang, green = python/colima/cost, amber = command-too-slow / battery warn, red = failure / battery critical, purple = terraform / agents-running). Every color earns a job. The synthwave is the lighting; the flight deck is the structure. The system is built from very few materials: one mono family with full Nerd Font glyph coverage (JetBrainsMono Nerd Font), a 12-token color palette plus a 3-step pure-black surface ramp, powerline-style background-block segments for statuslines, and 1-px borders for nvim float / lazygit active pane / mkdocs focused inputs.",
+    "keyCharacteristics": [
+      "Two-channel system. Cobalt is where; magenta is what's happening. The other 7 colors are auxiliary runtime signal.",
+      "Pure-black base. #000000 is the default surface across nvim, mkdocs, and the terminal background.",
+      "Powerline + 1-px lines. Solid background blocks signal channels; 1-px borders signal focus.",
+      "Glyph density is calibrated. Nerd Font glyphs are kept where they carry meaning, never strung as personality.",
+      "Two-track elevation. TUI surfaces are flat; the mkdocs site is allowed a layered shadow vocabulary."
+    ],
+    "rules": [
+      { "name": "The Two-Channel Rule", "body": "Cobalt is where you are; magenta is what's happening. If a new theme element needs an accent, ask 'is this a place or an event?' and pick accordingly. Never use both colors on the same element to mean different things.", "section": "colors" },
+      { "name": "The Channel-Earns-Its-Place Rule", "body": "Every non-primary color (cyan, green, amber, yellow, red, purple) is a runtime channel. Yellow is IncSearch only; purple is terraform/agents only. A color does not get reused for an unrelated meaning.", "section": "colors" },
+      { "name": "The Pure-Black Rule", "body": "The default surface is #000000. The cobalt and magenta saturations were calibrated against pure black; adopting #0a0a14 or any other near-black as default dilutes their snap.", "section": "colors" },
+      { "name": "The Starship-Is-Truth Rule", "body": "The 9-color base palette comes from zsh/starship.toml. If a value drifts (the bat theme's blue is a slightly different blue, the lazygit accent is one shade off), fix the value in the consuming config — never starship.", "section": "colors" },
+      { "name": "The Mono-Is-The-Voice Rule", "body": "The terminal system has exactly one typographic register — JetBrainsMono Nerd Font. Hierarchy comes from weight, color, and Nerd Font glyph density, not from a typographic scale.", "section": "typography" },
+      { "name": "The Docs-Inherit Rule", "body": "The mkdocs site uses mkdocs-material's typography defaults (Roboto + Roboto Mono). Custom typography is forbidden unless the change cascades from the palette (color, link decoration).", "section": "typography" },
+      { "name": "The Glyph-Is-Signal Rule", "body": "Nerd Font glyphs are kept where they carry meaning — replace a label or make scanning faster. Stringing glyphs together as personality garnish is forbidden.", "section": "typography" },
+      { "name": "The TUI-Has-No-Shadow Rule", "body": "Terminal surfaces (nvim, tmux, lazygit, bat, ccstatusline, starship) cannot and must not pursue shadow. Hierarchy in the terminal comes from the surface ramp, color contrast, and 1-px borders.", "section": "elevation" },
+      { "name": "The Magenta-Glow-Is-Focus Rule", "body": "On the docs site, shadow-magenta-glow is reserved for the focused input, the active tab, and any element representing 'the thing the user is interacting with right now.' Forbidden on cards or large surfaces.", "section": "elevation" },
+      { "name": "The Cobalt-Pop-Is-Showpiece Rule", "body": "shadow-cobalt-pop appears at most once or twice per docs page — on the hero palette swatch or the most-prominent before/after screenshot. Every additional use erodes its rarity.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do treat zsh/starship.toml's [palettes.cobalt] block as the source of truth for the 9 base color values.",
+      "Do keep cobalt and magenta on carbon-pure (#000000) surfaces only.",
+      "Do use cobalt for where you are and magenta for what's happening.",
+      "Do keep the 3-line starship prompt frame (╭─ │ ╰─) in grey.",
+      "Do allow the docs site to use shadows (low / med / magenta-glow / cobalt-pop) as documented.",
+      "Do keep mkdocs-material's typography defaults (Roboto + Roboto Mono).",
+      "Do treat each Nerd Font glyph as signal — replace a label or make scanning faster.",
+      "Do preserve prefers-reduced-motion on the docs site.",
+      "Do check that JetBrainsMono Nerd Font is brewed and active before assuming glyphs render.",
+      "Do keep the 'bold': true flags on the cobalt and magenta starship/ccstatusline segments."
+    ],
+    "donts": [
+      "Don't use a Dracula or Catppuccin palette (PRODUCT.md anti-reference).",
+      "Don't use a corporate / VSCode-default blue-gray palette (PRODUCT.md anti-reference).",
+      "Don't put cobalt on magenta or magenta on cobalt. The contrast is illegible.",
+      "Don't put cobalt or magenta on a light surface. The saturation dies.",
+      "Don't use box-shadow in any TUI surface. Terminals can't render shadow.",
+      "Don't use shadow-magenta-glow on cards or large surfaces.",
+      "Don't use border-left greater than 1-px on the docs site as a colored stripe.",
+      "Don't drift the bat theme away from TwoDark without building a custom theme that matches the palette exactly.",
+      "Don't add a third typeface to the system.",
+      "Don't chain Nerd Font glyphs together as personality garnish.",
+      "Don't use yellow (#F5C542) outside of nvim's IncSearch.",
+      "Don't use em dashes in prose on the docs site.",
+      "Don't use color alone to convey meaning.",
+      "Don't hard-code /Users/jay paths in any public surface."
+    ]
+  }
+}
