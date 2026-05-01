@@ -268,6 +268,20 @@ ai-status() {
     fi
 }
 
+# ─── bd (beads) helpers ─────────────────────────────────────────
+# bd-push: push beads to a Dolt remote, but silently no-op if no
+# remote is configured. Use this in place of a bare `bd dolt push` so
+# local-only repos don't print the 7-line "No remotes configured"
+# help blurb every session. When you later run
+#   bd dolt remote add origin <url>
+# this auto-starts pushing — no further edits needed.
+bd-push() {
+    if bd dolt remote list 2>&1 | grep -q "No remotes"; then
+        return 0  # local-only — silent no-op
+    fi
+    bd dolt push "$@"
+}
+
 # ─── fzf shell keybindings (Ctrl-R / Ctrl-T / Alt-C) ─────────────
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
