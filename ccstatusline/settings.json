@@ -1,0 +1,131 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "c-model",
+        "type": "model",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:2D5BFF",
+        "bold": true
+      },
+      {
+        "id": "c-think",
+        "type": "thinking-effort",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:FF1FE7"
+      },
+      {
+        "id": "c-ctx-len",
+        "type": "context-length",
+        "color": "hex:e0e0ee",
+        "backgroundColor": "hex:6b7280"
+      },
+      {
+        "id": "c-ctx-pct",
+        "type": "context-percentage",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:F59E0B"
+      },
+      {
+        "id": "c-session",
+        "type": "session-usage",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:FF4D4D"
+      },
+      {
+        "id": "c-reset",
+        "type": "reset-timer",
+        "color": "hex:e0e0ee",
+        "backgroundColor": "hex:6b7280"
+      },
+      {
+        "id": "c-cost",
+        "type": "session-cost",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:22EE99"
+      },
+      {
+        "id": "c-fleet",
+        "type": "custom-command",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:22D3EE",
+        "commandPath": "bash ~/.claude/statusline-probes/fleet-status.sh",
+        "timeout": 1000
+      }
+    ],
+    [
+      {
+        "id": "l-cwd",
+        "type": "current-working-dir",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:2D5BFF",
+        "bold": true,
+        "metadata": {
+          "segments": "3",
+          "abbreviateHome": "true"
+        }
+      },
+      {
+        "id": "l-branch",
+        "type": "git-branch",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:FF1FE7",
+        "bold": true
+      },
+      {
+        "id": "l-changes",
+        "type": "git-changes",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:D670D6"
+      },
+      {
+        "id": "l-acc",
+        "type": "custom-command",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:22EE99",
+        "commandPath": "bash ~/.claude/statusline-probes/acc-health.sh",
+        "timeout": 1500
+      },
+      {
+        "id": "l-frontend",
+        "type": "custom-command",
+        "color": "hex:e0e0ee",
+        "backgroundColor": "hex:0050E0",
+        "commandPath": "bash ~/.claude/statusline-probes/frontend-port.sh",
+        "timeout": 1500
+      }
+    ],
+    [
+      {
+        "id": "l-agents",
+        "type": "custom-command",
+        "color": "hex:0a0a14",
+        "backgroundColor": "hex:c0a3ff",
+        "commandPath": "bash ~/.claude/statusline-probes/agents-running.sh",
+        "timeout": 1500
+      }
+    ]
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 3,
+  "inheritSeparatorColors": true,
+  "globalBold": false,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": true,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": true,
+    "continueThemeAcrossLines": true,
+    "theme": "custom"
+  },
+  "defaultPadding": " "
+}

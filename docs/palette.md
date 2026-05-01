@@ -1,6 +1,6 @@
 # 🎨 Color palette
 
-The same palette is shared across **terminal, tmux, starship, fzf, nvim, lazygit, and bat** so context-switching never breaks visual flow.
+The same palette is shared across **terminal, tmux, starship, ccstatusline, fzf, nvim, lazygit, and bat** so context-switching never breaks visual flow.
 
 ![Palette](screenshots/palette.png){ width=700 }
 
@@ -22,6 +22,7 @@ The same palette is shared across **terminal, tmux, starship, fzf, nvim, lazygit
 | Surface | File | Notes |
 |---------|------|-------|
 | Starship prompt | [`zsh/starship.toml`](https://github.com/your-user/dotfiles/blob/main/zsh/starship.toml) | `[palettes.cobalt]` block |
+| Claude Code (ccstatusline) | [`ccstatusline/settings.json`](https://github.com/your-user/dotfiles/blob/main/ccstatusline/settings.json) | per-widget `backgroundColor` in `hex:RRGGBB`, `colorLevel: 3` |
 | fzf | [`zsh/.zshrc`](https://github.com/your-user/dotfiles/blob/main/zsh/.zshrc) | `$FZF_DEFAULT_OPTS` |
 | Neovim | [`nvim/lua/plugins/colorscheme.lua`](https://github.com/your-user/dotfiles/blob/main/nvim/lua/plugins/colorscheme.lua) | `on_colors` and `on_highlights` overrides |
 | Tmux | [`tmux/.tmux.conf`](https://github.com/your-user/dotfiles/blob/main/tmux/.tmux.conf) | status/window/pane styles |
