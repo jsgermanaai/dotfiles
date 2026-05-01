@@ -41,9 +41,12 @@ theme:
   icon:
     repo: fontawesome/brands/github
     annotation: material/arrow-right-circle
-  font:
-    text: Inter
-    code: JetBrains Mono
+  # Self-host Satoshi (body) + JetBrains Mono (code) via @import in
+  # docs/stylesheets/cobalt.css. theme.font: false disables mkdocs-material's
+  # Google Fonts auto-load so our --md-text-font / --md-code-font CSS
+  # variables aren't overridden. See /impeccable typeset selection
+  # (flagshipsyst-x00) for the rationale.
+  font: false
 
 # ─── Plugins ───────────────────────────────────────────────────
 plugins:

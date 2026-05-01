@@ -1,7 +1,25 @@
-/* Cobalt + Magenta palette for mkdocs-material — matches the dotfiles theme. */
+/* Self-hosted typography + cobalt + magenta palette for mkdocs-material.
+ *
+ * Typography: mkdocs.yml has theme.font: false to disable mkdocs-material's
+ * Google Fonts auto-load. Satoshi (body) is pulled from Fontshare; JetBrains
+ * Mono (code) from Google Fonts. Both bind to mkdocs-material's
+ * --md-text-font / --md-code-font CSS variables in :root below.
+ *
+ * Satoshi was selected via /impeccable typeset (flagshipsyst-x00) as the
+ * cobalt-friendly Inter replacement. Geometric humanist with technical
+ * confidence — pairs naturally with JetBrains Mono and reads sharp on the
+ * pure-black canvas the cobalt + magenta palette demands.
+ */
+
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 :root,
 [data-md-color-scheme="slate"] {
+  /* Typography (self-hosted; see @import above and theme.font: false in mkdocs.yml) */
+  --md-text-font: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --md-code-font: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+
   --md-primary-fg-color:        #2D5BFF;   /* cobalt */
   --md-primary-fg-color--light: #3B82F6;
   --md-primary-fg-color--dark:  #0050E0;

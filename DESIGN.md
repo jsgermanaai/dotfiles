@@ -33,13 +33,13 @@ typography:
     lineHeight: 1.4
     letterSpacing: "normal"
   docs-body:
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+    fontFamily: "'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "normal"
   docs-heading:
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+    fontFamily: "'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
     fontSize: "32px"
     fontWeight: 600
     lineHeight: 1.2
@@ -209,10 +209,10 @@ The palette is two saturated neons (cobalt + magenta) on a three-step pure-black
 ## 3. Typography
 
 **Terminal Font:** JetBrainsMono Nerd Font (with `'JetBrains Mono', monospace` fallback) — required for prompt + statusline glyphs. Set in the terminal emulator (cmux / Ghostty / iTerm2) profile.
-**Docs Body Font:** Inter (with `-apple-system, BlinkMacSystemFont, sans-serif` fallback) — declared in `mkdocs.yml`'s `theme.font.text` block. NOT mkdocs-material's Roboto default. Inter is a deliberate choice for the slightly more technical, lower-x-height feel.
-**Docs Mono Font:** JetBrains Mono — declared in `mkdocs.yml`'s `theme.font.code` block. The same family as the terminal's `JetBrainsMono Nerd Font` (the terminal variant adds Nerd Font glyph extensions). The shared letterforms are the point: a code block on the docs site sits next to a terminal screenshot and the type matches.
+**Docs Body Font:** Satoshi (Indian Type Foundry; with `-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif` fallback) — self-hosted from Fontshare via @import in `docs/stylesheets/cobalt.css`. Selected via `/impeccable typeset` (flagshipsyst-x00) to replace Inter, which read as the generic dev-tool default that impeccable's typography rules explicitly flag. Satoshi is geometric with humanist warmth — confident on the pure-black canvas, deliberately distinct from the Inter / Roboto / Open Sans cluster, and pairs naturally with JetBrains Mono.
+**Docs Mono Font:** JetBrains Mono — self-hosted from Google Fonts via @import in `docs/stylesheets/cobalt.css`. The same family as the terminal's `JetBrainsMono Nerd Font` (the terminal variant adds Nerd Font glyph extensions). The shared letterforms are the point: a code block on the docs site sits next to a terminal screenshot and the type matches.
 
-**Character:** A single mono family carries the entire system — `JetBrains Mono`, with the Nerd Font extension active in the terminal. Inter handles docs-site body and headings. There is no third typeface. Hierarchy on the docs site comes from mkdocs-material's built-in scale, recolored to match the palette but otherwise untouched.
+**Character:** A single mono family carries the entire system — `JetBrains Mono`, with the Nerd Font extension active in the terminal. Satoshi handles docs-site body and headings — geometric-humanist, technical-but-not-cold, and visibly distinct from the dev-tool defaults that surround it. There is no third typeface. Hierarchy on the docs site comes from mkdocs-material's built-in scale, recolored to match the palette but otherwise untouched.
 
 ### Hierarchy (terminal)
 
@@ -221,15 +221,15 @@ The palette is two saturated neons (cobalt + magenta) on a three-step pure-black
 
 ### Hierarchy (docs site)
 
-- **Docs heading** (600, 32px and below per mkdocs-material scale, line-height 1.2, letter-spacing -0.01em): mkdocs-material default scale, untouched. Headings render in Inter (declared in `mkdocs.yml`).
-- **Docs body** (400, 16px, line-height 1.6): mkdocs-material body type, rendered in Inter.
+- **Docs heading** (600/700, 32px and below per mkdocs-material scale, line-height 1.2, letter-spacing -0.01em): mkdocs-material default scale, untouched. Headings render in Satoshi (self-hosted via `cobalt.css`).
+- **Docs body** (400, 16px, line-height 1.6): mkdocs-material body type, rendered in Satoshi.
 - **Docs mono** (400, 14px, line-height 1.5): Code blocks and inline `<code>` on the docs site. JetBrains Mono (declared in `mkdocs.yml`), with the cobalt 30% border and `carbon-elevated` background applied via `docs/stylesheets/cobalt.css`.
 
 ### Named Rules
 
 **The Mono-Is-The-Voice Rule.** The terminal system has exactly one typographic register — JetBrainsMono Nerd Font. Hierarchy comes from weight (regular vs. bold), color, and Nerd Font glyph density, not from a typographic scale. The terminal does not have headings.
 
-**The Mono-Echo Rule.** The docs site uses Inter (body) and JetBrains Mono (code), declared in `mkdocs.yml`'s `theme.font` block. The mono on the docs site is deliberately the SAME family as the terminal's `JetBrainsMono Nerd Font` (same letterforms; the terminal variant adds Nerd Font glyph extensions). When a terminal screenshot sits next to an inline code block on the docs site, the type matches by design. Returning to Roboto / Roboto Mono — or introducing any third typeface — is forbidden.
+**The Mono-Echo Rule.** The docs site uses Satoshi (body) and JetBrains Mono (code), self-hosted via @import in `docs/stylesheets/cobalt.css` (with `theme.font: false` in `mkdocs.yml` to disable mkdocs-material's Google Fonts auto-load). The mono on the docs site is deliberately the SAME family as the terminal's `JetBrainsMono Nerd Font` (same letterforms; the terminal variant adds Nerd Font glyph extensions). When a terminal screenshot sits next to an inline code block on the docs site, the type matches by design. Returning to Inter, Roboto, or any other generic dev-tool default — or introducing a third typeface — is forbidden.
 
 **The Glyph-Is-Signal Rule.** Nerd Font glyphs (`󰠅` for Azure, `⎈` for k8s, `󰁹` for battery, ` ` for git, etc.) are kept where they carry meaning. Stringing glyphs together to "add personality" — the powerline arrows-of-arrows trap — is forbidden. Each glyph either replaces a label or makes a label faster to scan.
 
@@ -340,7 +340,7 @@ Set to `TwoDark` theme — "the closest built-in to the cobalt/magenta-on-black 
 - **Do** use cobalt for *where you are* (directory, working dir, model name, k8s context-as-token, Azure subscription) and magenta for *what's happening* (git state, command failure, focused element, active tab, selection).
 - **Do** keep the 3-line starship prompt frame (`╭─ │ ╰─`) in `grey`. The frame is structural, not accent.
 - **Do** allow the docs site to use shadows (low / med / magenta-glow / cobalt-pop) as documented. The site is allowed depth that the TUI cannot have.
-- **Do** keep `mkdocs.yml`'s `theme.font` block at Inter (body) + JetBrains Mono (code). The mono deliberately echoes the terminal's `JetBrainsMono Nerd Font`; drift breaks the letterform match between docs and terminal.
+- **Do** keep `mkdocs.yml` at `theme.font: false` and self-host Satoshi (body) + JetBrains Mono (code) via @import in `docs/stylesheets/cobalt.css`. The mono deliberately echoes the terminal's `JetBrainsMono Nerd Font`; drift breaks the letterform match between docs and terminal.
 - **Do** treat each Nerd Font glyph as signal — `⎈` means k8s, `󰠅` means Azure, `` means git, `󰁹` means battery. If a glyph doesn't replace a label or make scanning faster, drop it.
 - **Do** preserve `prefers-reduced-motion` on the docs site — no scroll-driven animations.
 - **Do** check that `JetBrainsMono Nerd Font` is brewed and active before assuming glyphs render; gracefully fall back to ASCII when it's missing (per starship config behavior).
@@ -355,7 +355,7 @@ Set to `TwoDark` theme — "the closest built-in to the cobalt/magenta-on-black 
 - **Don't** use `shadow-magenta-glow` on cards or large surfaces. It signals interactivity at element scale; at surface scale it becomes decoration.
 - **Don't** use `border-left` greater than 1-px on the docs site as a colored stripe. mkdocs-material's admonition uses a structural left border that's part of the chassis — overriding it with a thicker colored stripe is the impeccable "side-stripe" anti-pattern.
 - **Don't** drift the bat theme away from TwoDark without building a custom bat theme that matches the palette exactly. An approximation that's "close to cobalt+magenta" is worse than the documented TwoDark approximation.
-- **Don't** add a third typeface to the system. The terminal uses JetBrainsMono Nerd Font. The docs site uses Inter (body) and JetBrains Mono (code). That's the entire typographic vocabulary — and the mono family is shared deliberately between terminal and docs.
+- **Don't** add a third typeface to the system. The terminal uses JetBrainsMono Nerd Font. The docs site uses Satoshi (body) and JetBrains Mono (code). That's the entire typographic vocabulary — and the mono family is shared deliberately between terminal and docs.
 - **Don't** chain Nerd Font glyphs together as personality garnish. Each glyph either replaces a label or makes scanning faster. "Personality" glyphs dilute the signal.
 - **Don't** use yellow (`#F5C542`) outside of nvim's `IncSearch`. It's a single-purpose token; quoting it elsewhere drifts the system.
 - **Don't** use em dashes in prose on the docs site. Use commas, colons, semicolons, periods, or parentheses. Also not `--` (cross-cutting impeccable rule).

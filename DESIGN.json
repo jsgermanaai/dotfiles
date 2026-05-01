@@ -131,7 +131,7 @@
       },
       "docs-body": {
         "displayName": "Docs Body",
-        "purpose": "Inter, declared in mkdocs.yml's theme.font.text block. Deliberate choice over mkdocs-material's Roboto default — slightly more technical, lower-x-height feel."
+        "purpose": "Satoshi (Indian Type Foundry), self-hosted from Fontshare via @import in docs/stylesheets/cobalt.css. Selected via /impeccable typeset (flagshipsyst-x00) to replace Inter — geometric humanist with technical confidence, deliberately distinct from the Inter / Roboto / Open Sans cluster."
       },
       "docs-heading": {
         "displayName": "Docs Heading",
@@ -230,7 +230,7 @@
       "refersTo": "mkdocs-link",
       "description": "An inline link on the docs site: cobalt text by default, magenta + wavy magenta underline on hover.",
       "html": "<p class=\"ds-mk-prose\">See the <a href=\"#\" class=\"ds-mk-link\">palette page</a> for the canonical hex values.</p>",
-      "css": ".ds-mk-prose { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #e0e0ee; background: #000000; padding: 16px; margin: 0; } .ds-mk-link { color: #2D5BFF; text-decoration: none; border-bottom: 1px solid transparent; transition: color 150ms ease-in-out; } .ds-mk-link:hover { color: #FF1FE7; text-decoration: underline wavy #FF1FE7; }"
+      "css": ".ds-mk-prose { font-family: 'Satoshi', sans-serif; font-size: 16px; line-height: 1.6; color: #e0e0ee; background: #000000; padding: 16px; margin: 0; } .ds-mk-link { color: #2D5BFF; text-decoration: none; border-bottom: 1px solid transparent; transition: color 150ms ease-in-out; } .ds-mk-link:hover { color: #FF1FE7; text-decoration: underline wavy #FF1FE7; }"
     },
     {
       "name": "mkdocs Admonition (default)",
@@ -238,7 +238,7 @@
       "refersTo": "mkdocs-admonition-default",
       "description": "A default mkdocs-material admonition with cobalt left border. Warning variants use magenta instead.",
       "html": "<aside class=\"ds-mk-admonition\"><header class=\"ds-mk-admonition-head\">Note</header><p class=\"ds-mk-admonition-body\">The cobalt + magenta values come from <code class=\"ds-mk-code\">zsh/starship.toml</code>. Drift between consumers and starship is the bug.</p></aside>",
-      "css": ".ds-mk-admonition { background: #0a0a14; border: 1px solid #1a1a3e; border-left: 4px solid #2D5BFF; border-radius: 2px; padding: 14px 16px; font-family: 'Inter', sans-serif; color: #e0e0ee; box-shadow: 0 1px 2px rgba(0,0,0,0.6); } .ds-mk-admonition-head { font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: #2D5BFF; margin: 0 0 6px 0; } .ds-mk-admonition-body { font-size: 16px; line-height: 1.6; margin: 0; } .ds-mk-code { font-family: 'JetBrains Mono', monospace; background: #000000; border: 1px solid rgba(45, 91, 255, 0.3); padding: 1px 6px; border-radius: 2px; font-size: 14px; }"
+      "css": ".ds-mk-admonition { background: #0a0a14; border: 1px solid #1a1a3e; border-left: 4px solid #2D5BFF; border-radius: 2px; padding: 14px 16px; font-family: 'Satoshi', sans-serif; color: #e0e0ee; box-shadow: 0 1px 2px rgba(0,0,0,0.6); } .ds-mk-admonition-head { font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: #2D5BFF; margin: 0 0 6px 0; } .ds-mk-admonition-body { font-size: 16px; line-height: 1.6; margin: 0; } .ds-mk-code { font-family: 'JetBrains Mono', monospace; background: #000000; border: 1px solid rgba(45, 91, 255, 0.3); padding: 1px 6px; border-radius: 2px; font-size: 14px; }"
     },
     {
       "name": "mkdocs Code Block",
@@ -254,7 +254,7 @@
       "refersTo": "mkdocs-link",
       "description": "A docs-site search input in focused state. Demonstrates the magenta-glow shadow — 1-px structural ring + 16-px synthwave halo.",
       "html": "<label class=\"ds-mk-search-label\"><svg class=\"ds-mk-search-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M21 21l-4.35-4.35\"/></svg><input class=\"ds-mk-search-input\" type=\"search\" placeholder=\"Search the system\" value=\"cobalt\" /></label>",
-      "css": ".ds-mk-search-label { display: inline-flex; align-items: center; gap: 8px; padding: 0 12px; background: #0a0a14; border-radius: 2px; box-shadow: 0 0 0 1px #FF1FE7, 0 0 16px rgba(255, 31, 231, 0.35); } .ds-mk-search-icon { color: #FF1FE7; flex-shrink: 0; } .ds-mk-search-input { background: transparent; border: 0; outline: 0; color: #e0e0ee; font-family: 'Inter', sans-serif; font-size: 14px; padding: 10px 0; min-width: 240px; }"
+      "css": ".ds-mk-search-label { display: inline-flex; align-items: center; gap: 8px; padding: 0 12px; background: #0a0a14; border-radius: 2px; box-shadow: 0 0 0 1px #FF1FE7, 0 0 16px rgba(255, 31, 231, 0.35); } .ds-mk-search-icon { color: #FF1FE7; flex-shrink: 0; } .ds-mk-search-input { background: transparent; border: 0; outline: 0; color: #e0e0ee; font-family: 'Satoshi', sans-serif; font-size: 14px; padding: 10px 0; min-width: 240px; }"
     }
   ],
   "narrative": {
@@ -273,7 +273,7 @@
       { "name": "The Pure-Black Rule", "body": "The default surface is #000000. The cobalt and magenta saturations were calibrated against pure black; adopting #0a0a14 or any other near-black as default dilutes their snap.", "section": "colors" },
       { "name": "The Starship-Is-Truth Rule", "body": "The 9-color base palette comes from zsh/starship.toml. If a value drifts (the bat theme's blue is a slightly different blue, the lazygit accent is one shade off), fix the value in the consuming config — never starship.", "section": "colors" },
       { "name": "The Mono-Is-The-Voice Rule", "body": "The terminal system has exactly one typographic register — JetBrainsMono Nerd Font. Hierarchy comes from weight, color, and Nerd Font glyph density, not from a typographic scale.", "section": "typography" },
-      { "name": "The Mono-Echo Rule", "body": "The docs site uses Inter (body) and JetBrains Mono (code), declared in mkdocs.yml's theme.font block. The mono on the docs site is deliberately the SAME family as the terminal's JetBrainsMono Nerd Font (same letterforms; the terminal variant adds Nerd Font glyph extensions). Returning to Roboto, or introducing any third typeface, is forbidden.", "section": "typography" },
+      { "name": "The Mono-Echo Rule", "body": "The docs site uses Satoshi (body) and JetBrains Mono (code), self-hosted via @import in docs/stylesheets/cobalt.css (with theme.font: false in mkdocs.yml to disable mkdocs-material's Google Fonts auto-load). The mono is deliberately the SAME family as the terminal's JetBrainsMono Nerd Font (same letterforms; the terminal variant adds Nerd Font glyph extensions). Returning to Inter, Roboto, or any other generic dev-tool default — or introducing a third typeface — is forbidden.", "section": "typography" },
       { "name": "The Glyph-Is-Signal Rule", "body": "Nerd Font glyphs are kept where they carry meaning — replace a label or make scanning faster. Stringing glyphs together as personality garnish is forbidden.", "section": "typography" },
       { "name": "The TUI-Has-No-Shadow Rule", "body": "Terminal surfaces (nvim, tmux, lazygit, bat, ccstatusline, starship) cannot and must not pursue shadow. Hierarchy in the terminal comes from the surface ramp, color contrast, and 1-px borders.", "section": "elevation" },
       { "name": "The Magenta-Glow-Is-Focus Rule", "body": "On the docs site, shadow-magenta-glow is reserved for the focused input, the active tab, and any element representing 'the thing the user is interacting with right now.' Forbidden on cards or large surfaces.", "section": "elevation" },
@@ -285,7 +285,7 @@
       "Do use cobalt for where you are and magenta for what's happening.",
       "Do keep the 3-line starship prompt frame (╭─ │ ╰─) in grey.",
       "Do allow the docs site to use shadows (low / med / magenta-glow / cobalt-pop) as documented.",
-      "Do keep mkdocs.yml's theme.font block at Inter (body) + JetBrains Mono (code) — the mono deliberately echoes the terminal's JetBrainsMono Nerd Font.",
+      "Do keep mkdocs.yml at theme.font: false and self-host Satoshi (body) + JetBrains Mono (code) via @import in docs/stylesheets/cobalt.css — the mono deliberately echoes the terminal's JetBrainsMono Nerd Font.",
       "Do treat each Nerd Font glyph as signal — replace a label or make scanning faster.",
       "Do preserve prefers-reduced-motion on the docs site.",
       "Do check that JetBrainsMono Nerd Font is brewed and active before assuming glyphs render.",
