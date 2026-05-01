@@ -166,7 +166,7 @@ This is a personal dotfiles repo, but if you're forking it the design system is 
 - [`DESIGN.md`](DESIGN.md) — visual system (12-color palette, typography, elevation, components, do's and don'ts)
 - [`DESIGN.json`](DESIGN.json) — Stitch-compatible sidecar with OKLCH canonicals, tonal ramps, and self-contained component snippets
 
-Both PRODUCT.md and DESIGN.md were generated via [`/impeccable teach`](https://github.com/anthropics/skills/tree/main/impeccable). The fonts (Satoshi for body, JetBrains Mono for code) were chosen via `/impeccable typeset`.
+The fonts (Satoshi for body, JetBrains Mono for code) were chosen for look and mass compatability.
 
 ---
 
