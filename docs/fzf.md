@@ -1,5 +1,7 @@
 # ⚡ fzf shortcuts
 
+Fuzzy file picker, history search, cd jump, and tab completion. Theme matches the rest of the palette via `$FZF_DEFAULT_OPTS`.
+
 | Keybinding | What it does |
 |-----------|--------------|
 | ++ctrl+r++ | Fuzzy search shell history |

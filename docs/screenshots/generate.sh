@@ -37,6 +37,7 @@ C_CYAN='\033[38;2;34;211;238m'
 C_AMBER='\033[38;2;245;158;11m'
 C_GREEN='\033[38;2;34;238;153m'
 C_RED='\033[38;2;255;77;77m'
+C_FG='\033[38;2;224;224;238m'
 B='\033[1m'
 R='\033[0m'
 
@@ -317,6 +318,129 @@ echo "[12/12] codecompanion (synthesized chat panel)..."
     printf " ${C_GREY}<leader>aa${R} chat   ${C_GREY}<leader>ai${R} inline   ${C_GREY}<leader>ae${R} actions   ${C_GREY}<leader>aA${R} add (visual)\n"
 } | freeze "${COMMON[@]}" --output "$OUT/codecompanion.png"
 echo "  → codecompanion.png"
+
+# ─── 13. fzf — fuzzy picker preview ──────────────────────────
+echo "[13/17] fzf (synthesized)..."
+{
+    printf "${C_GREY}╭─${R} fzf preview                                                 ${C_GREY}─╮${R}\n"
+    printf "${C_GREY}│${R}  ${C_COBALT}❯${R} ${C_FG}docs/screenshots/                                         ${C_GREY}│${R}\n"
+    printf "${C_GREY}│${R}    ${C_COBALT}drwxr-xr-x${R}  4.0K  ${C_FG}docs/                                  ${C_GREY}│${R}\n"
+    printf "${C_GREY}│${R}    ${C_COBALT}drwxr-xr-x${R}  4.0K  ${C_FG}docs/screenshots/                      ${C_GREY}│${R}\n"
+    printf "${C_GREY}│${R}    ${C_GREY}-rw-r--r--${R}   72K  ${C_GREEN}docs/screenshots/palette.png${R}          ${C_GREY}│${R}\n"
+    printf "${C_GREY}│${R}    ${C_GREY}-rw-r--r--${R}   84K  ${C_GREEN}docs/screenshots/starship-prompt.png${R}  ${C_GREY}│${R}\n"
+    printf "${C_GREY}│${R}    ${C_GREY}-rw-r--r--${R}   91K  ${C_GREEN}docs/screenshots/tmux.png${R}             ${C_GREY}│${R}\n"
+    printf "${C_GREY}│${R}    ${C_GREY}-rw-r--r--${R}   88K  ${C_GREEN}docs/screenshots/lazygit.png${R}          ${C_GREY}│${R}\n"
+    printf "${C_GREY}╰─${R}                                                              ${C_GREY}─╯${R}\n"
+    printf "  ${C_MAGENTA}❯${R} ${C_COBALT}docs/screenshots/${R}${C_MAGENTA}_${R}\n"
+    printf "  ${C_GREY}5/12 (filtered) — Tab to multi-select, Enter to insert${R}\n"
+} | freeze "${COMMON[@]}" --output "$OUT/fzf.png"
+echo "  → fzf.png"
+
+# ─── 14. colima — VM running with 🐳 prompt indicator ────────
+echo "[14/17] colima (synthesized)..."
+{
+    printf "${C_GREY}╭─${R} ${C_COBALT}${B} ~/work/myproject${R}  ${C_MAGENTA}on  main${R}                       ${C_GREEN}🐳${R}\n"
+    printf "${C_GREY}│ ${R}\n"
+    printf "${C_GREY}╰─${R}${C_COBALT}${B}❯${R} colima-status\n"
+    printf "${C_GREEN}●${R} ${C_FG}colima VM:${R}    running  (4 CPU / 6 GB / 60 GB disk)\n"
+    printf "${C_GREEN}●${R} ${C_FG}docker:${R}       reachable (unix:///\$HOME/.colima/default/docker.sock)\n"
+    printf "${C_GREEN}●${R} ${C_FG}k3s:${R}          ${C_GREY}disabled${R} — colima start --kubernetes to enable\n"
+    printf "\n"
+    printf "${C_GREY}╭─${R} ${C_COBALT}${B} ~/work/myproject${R}  ${C_MAGENTA}on  main${R}                       ${C_GREEN}🐳${R}\n"
+    printf "${C_GREY}│ ${R}\n"
+    printf "${C_GREY}╰─${R}${C_COBALT}${B}❯${R} ${C_GREY}# 🐳 in the prompt = VM is running. colima-stop when done.${R}\n"
+} | freeze "${COMMON[@]}" --output "$OUT/colima.png"
+echo "  → colima.png"
+
+# ─── 15. install — install.sh output summary ────────────────
+echo "[15/17] install (synthesized)..."
+{
+    printf "${C_COBALT}${B}━━ install.sh ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${R}\n"
+    printf "${C_GREEN}✓${R} ${C_FG}Symlinked${R}  13 dotfiles into \$HOME\n"
+    printf "${C_GREEN}✓${R} ${C_FG}Bridged${R}    ~/.dotfiles → \$DOTFILES\n"
+    printf "${C_GREEN}✓${R} ${C_FG}Homebrew${R}   38 formulae, 4 casks  (Brewfile applied)\n"
+    printf "${C_GREEN}✓${R} ${C_FG}oh-my-zsh${R}  3 custom plugins\n"
+    printf "${C_GREEN}✓${R} ${C_FG}fzf${R}        Ctrl-R / Ctrl-T / Alt-C bound\n"
+    printf "${C_GREEN}✓${R} ${C_FG}tmux${R}       8 plugins via TPM (headless)\n"
+    printf "${C_GREEN}✓${R} ${C_FG}Neovim${R}     Lazy + Mason synced (headless)\n"
+    printf "${C_GREEN}✓${R} ${C_FG}NVM${R}        installed\n"
+    printf "${C_GREEN}✓${R} ${C_FG}MLX${R}        mlx-lm via pipx\n"
+    printf "${C_GREEN}✓${R} ${C_FG}Verified${R}   21 critical tools resolve\n"
+    printf "${C_COBALT}${B}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${R}\n"
+    printf "\n"
+    printf "${C_MAGENTA}${B}Done.${R} Restart your shell: ${C_COBALT}exec zsh${R}\n"
+} | freeze "${COMMON[@]}" --output "$OUT/install.png"
+echo "  → install.png"
+
+# ─── 16. layout — repo tree via eza ─────────────────────────
+echo "[16/17] layout..."
+{
+    prompt_line "~/.dotfiles" "eza --tree --level=2 --icons"
+    # Resolve the symlink — eza doesn't traverse top-level symlinks, so passing
+    # ~/.dotfiles directly prints just the link resolution. realpath gives us
+    # the underlying directory and eza walks it as expected.
+    DOT_REAL="$(realpath "$HOME/.dotfiles" 2>/dev/null || echo "$HOME/dotfiles")"
+    if command -v eza >/dev/null 2>&1 && [ -d "$DOT_REAL" ]; then
+        eza --tree --level=2 --icons --color=always "$DOT_REAL" 2>/dev/null | head -28
+    else
+        # Fallback if eza isn't available on this machine
+        printf "${C_COBALT}.${R}\n"
+        printf "├── ${C_COBALT}docs${R}/\n"
+        printf "│   ├── screenshots/\n"
+        printf "│   ├── stylesheets/\n"
+        printf "│   └── *.md  (16 pages)\n"
+        printf "├── ${C_COBALT}zsh${R}/  (.zshrc, .zprofile, starship.toml)\n"
+        printf "├── ${C_COBALT}nvim${R}/  (LazyVim config + plugins)\n"
+        printf "├── ${C_COBALT}tmux${R}/\n"
+        printf "├── ${C_COBALT}lazygit${R}/\n"
+        printf "├── ${C_COBALT}ccstatusline${R}/\n"
+        printf "├── ${C_COBALT}bat${R}/\n"
+        printf "├── ${C_COBALT}git${R}/\n"
+        printf "├── ${C_COBALT}README.md${R}\n"
+        printf "├── ${C_COBALT}PRODUCT.md${R}    (design strategic context)\n"
+        printf "├── ${C_COBALT}DESIGN.md${R}     (visual system + tokens)\n"
+        printf "├── ${C_COBALT}install.sh${R}    (idempotent installer)\n"
+        printf "└── ${C_COBALT}Brewfile${R}      (fresh-machine spec)\n"
+    fi
+} | freeze "${COMMON[@]}" --output "$OUT/layout.png"
+echo "  → layout.png"
+
+# ─── 17. ccstatusline — Claude Code powerline statusline ────
+# Three rows of solid-colored powerline segments matching the
+# ccstatusline/settings.json config: cobalt/magenta/grey/amber/red/
+# green/cyan/cobalt-deep/purple, separated by  arrow chevrons.
+# Foreground is carbon-elevated (#0a0a14) on saturated backgrounds.
+echo "[17/17] ccstatusline (synthesized)..."
+{
+    # Row 1: model, thinking, ctx, ctx%, cost, fleet
+    printf "\033[48;2;45;91;255m\033[38;2;10;10;20m\033[1m opus 4.7 \033[0m"
+    printf "\033[38;2;45;91;255m\033[48;2;255;31;231m\033[0m"
+    printf "\033[48;2;255;31;231m\033[38;2;10;10;20m thinking \033[0m"
+    printf "\033[38;2;255;31;231m\033[48;2;107;114;128m\033[0m"
+    printf "\033[48;2;107;114;128m\033[38;2;224;224;238m 128k \033[0m"
+    printf "\033[38;2;107;114;128m\033[48;2;245;158;11m\033[0m"
+    printf "\033[48;2;245;158;11m\033[38;2;10;10;20m\033[1m 42%% \033[0m"
+    printf "\033[38;2;245;158;11m\033[48;2;34;238;153m\033[0m"
+    printf "\033[48;2;34;238;153m\033[38;2;10;10;20m \$8.42 \033[0m"
+    printf "\033[38;2;34;238;153m\033[48;2;34;211;238m\033[0m"
+    printf "\033[48;2;34;211;238m\033[38;2;10;10;20m fleet:1 \033[0m"
+    printf "\033[38;2;34;211;238m\033[0m\n"
+    # Row 2: cwd, branch, changes, acc, frontend
+    printf "\033[48;2;45;91;255m\033[38;2;10;10;20m\033[1m ~/.dotfiles \033[0m"
+    printf "\033[38;2;45;91;255m\033[48;2;255;31;231m\033[0m"
+    printf "\033[48;2;255;31;231m\033[38;2;10;10;20m\033[1m  main \033[0m"
+    printf "\033[38;2;255;31;231m\033[48;2;214;112;214m\033[0m"
+    printf "\033[48;2;214;112;214m\033[38;2;10;10;20m !2 +1 \033[0m"
+    printf "\033[38;2;214;112;214m\033[48;2;34;238;153m\033[0m"
+    printf "\033[48;2;34;238;153m\033[38;2;10;10;20m acc:OK \033[0m"
+    printf "\033[38;2;34;238;153m\033[48;2;0;80;224m\033[0m"
+    printf "\033[48;2;0;80;224m\033[38;2;224;224;238m :3000 \033[0m"
+    printf "\033[38;2;0;80;224m\033[0m\n"
+    # Row 3: agents
+    printf "\033[48;2;192;163;255m\033[38;2;10;10;20m agents: 1 \033[0m"
+    printf "\033[38;2;192;163;255m\033[0m\n"
+} | freeze "${COMMON[@]}" --output "$OUT/ccstatusline.png"
+echo "  → ccstatusline.png"
 
 echo ""
 echo "Done. Generated:"

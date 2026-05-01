@@ -1,5 +1,7 @@
 # 🗂 Repository layout
 
+What symlinks where. The `install.sh` script wires every dotfile into `$HOME` via `link_file`.
+
 ```
 dotfiles/
 ├── 📝 README.md                  ← project overview

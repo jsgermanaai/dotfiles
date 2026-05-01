@@ -1,5 +1,7 @@
 # 🦾 Modern CLI stack
 
+Modern replacements for `ls`, `cat`, `grep`, `find`, `cd`, `top`, `du`, `man`. All themed with the cobalt + magenta palette.
+
 | Old | New | Aliases / Notes |
 |-----|-----|-----------------|
 | `ls` | **eza** | `ls`, `ll`, `la`, `lt` (tree, 2-deep), `ltt` (tree, 3-deep) |

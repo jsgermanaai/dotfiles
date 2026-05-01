@@ -1,5 +1,7 @@
 # ⚠️ Caveats & gotchas
 
+What you'll trip over installing this, and how to recover.
+
 ??? warning "The Brewfile is a fresh-machine spec, not an inventory."
     If you `brew install <thing>` manually for a one-off, it won't be in the
     Brewfile. That's by design — the file describes what a **new** laptop

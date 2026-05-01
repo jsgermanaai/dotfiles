@@ -1,5 +1,7 @@
 # 🚀 Install
 
+What `./install.sh` actually does, command by command. Idempotent and safe to re-run.
+
 ```bash
 git clone <this-repo> ~/.dotfiles
 cd ~/.dotfiles
