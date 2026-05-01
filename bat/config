@@ -1,0 +1,8 @@
+# bat — used as cat replacement and as MANPAGER.
+# TwoDark is the closest built-in to the cobalt/magenta-on-black aesthetic.
+# Run `bat --list-themes` to browse alternatives, then change here.
+--theme="TwoDark"
+--style="numbers,changes,header"
+--map-syntax="*.jenkinsfile:Groovy"
+--map-syntax="*.props:Java Properties"
+--paging=auto

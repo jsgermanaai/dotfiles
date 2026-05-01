@@ -1,209 +1,275 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# ─── PATH & env ──────────────────────────────────────────────────
 export PATH=/opt/homebrew/bin:$PATH
-
-# Use Homebrew Python 3.11 as default python3
 export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.lmstudio/bin"           # LM Studio CLI (lms)
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"    # Codeium / Windsurf
 
-# Required for Expo and React Native local app development
+# Java / Android (Expo + React Native local dev)
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-
-# Android specific paths after installing Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# To stop brew from auto updating
+# Don't auto-update brew on every install (slow + surprising)
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-ZSH_THEME="agnoster"
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
 
-# Uncomment one of the following lines to change the auto-update behavior
-zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Default editor → neovim
+export EDITOR="nvim"
+export VISUAL="nvim"
 
+# Colorize man pages with bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Use fd as fzf's default file walker (respects .gitignore, fast)
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+# fzf neon theme — cobalt + magenta on black
+export FZF_DEFAULT_OPTS="
+  --height 40% --layout=reverse --border=rounded
+  --color=bg+:#0a0a14,bg:#000000,spinner:#FF1FE7,hl:#FF1FE7
+  --color=fg:#e0e0ee,header:#FF1FE7,info:#22D3EE,pointer:#FF1FE7
+  --color=marker:#22EE99,fg+:#FF1FE7,prompt:#2D5BFF,hl+:#FF1FE7
+  --color=border:#2D5BFF"
+
+# ─── oh-my-zsh ───────────────────────────────────────────────────
+export ZSH="$HOME/.oh-my-zsh"
+
+# Prompt is starship — disable any oh-my-zsh theme
+ZSH_THEME=""
+
+# Disable automatic updates (we drive update cadence ourselves)
+zstyle ':omz:update' mode disabled
+
 plugins=(
-    git
-    node
-    vscode
-    aliases
-    azure
-    battery
-    branch
-    gh
-    git-auto-fetch
-    git-commit
-    github
-    git-prompt
-    kubectl
-    kubectx
-    kube-ps1
+    git                       # alias suite for git
+    gh                        # GitHub CLI completions
+    azure                     # az completions
+    kubectl                   # kubectl completions + aliases
+    kubectx                   # kubectx/kubens completions
+    node                      # node completions
+    fzf-tab                   # custom: replaces tab completion with fzf menu (must come before syntax-highlighting)
+    zsh-autosuggestions       # custom: gray ghost text from history
+    zsh-syntax-highlighting   # custom: command coloring (must be LAST)
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# ─── Prompt: starship ────────────────────────────────────────────
+eval "$(starship init zsh)"
 
-# Custom scripts
+# ─── zoxide (smarter cd) ─────────────────────────────────────────
+# `z foo` jumps to a frecent dir matching foo; `zi` for interactive picker.
+eval "$(zoxide init zsh --cmd j)"
+
+# ─── direnv ──────────────────────────────────────────────────────
+eval "$(direnv hook zsh)"
+
+# ─── NVM ─────────────────────────────────────────────────────────
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# aliases
-## alias zshconfig="mate ~/.zshrc"
-## alias ohmyzsh="mate ~/.oh-my-zsh"
+# ─── fzf-tab tuning ──────────────────────────────────────────────
+# Group completions by category, preview directories with eza
+zstyle ':completion:*' menu no
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always --icons $realpath'
+zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-## Compilation flags
-export ARCHFLAGS="-arch x86_64"
+# ─── Modern CLI replacements ─────────────────────────────────────
+# eza (ls)
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -l --icons --group-directories-first --git'
+alias la='eza -la --icons --group-directories-first --git'
+alias lt='eza --tree --level=2 --icons --group-directories-first'
+alias ltt='eza --tree --level=3 --icons --group-directories-first'
+# bat (cat) — keep `cat` honest; use `bcat` for the pretty version
+alias bcat='bat'
+# btop / dust / tldr — direct binaries, no alias needed
+# tldr is `tldr` from tealdeer
 
-## Opening GitHub directory
+# ─── Aliases — directories ───────────────────────────────────────
 alias g="$HOME/Documents/GitHub/"
+alias ed="$HOME/Documents/GitHub/expo/docs"
+alias ex="$HOME/Documents/GitHub/expo"
+alias cdai='cd ~/work/auditidentity'
 
-## Show touch on iOS simulator
-alias showtouch="defaults write com.apple.iphonesimulator ShowSingleTouches 1"
-
-## Hide touch on iOS simulator
-alias hidetouch="defaults write com.apple.iphonesimulator ShowSingleTouches 0"
-
-## Show/Hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+# ─── Aliases — Finder / macOS housekeeping ──────────────────────
+alias show='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 alias killds="find . -type f -name '*.DS_Store' -ls -delete"
 
-## Resize icons in launchpad
-alias lcol="defaults write com.apple.dock springboard-columns -int 9"
-alias lrow="defaults write com.apple.dock springboard-rows -int 8"
-alias kdock="killall Dock"
+# ─── Aliases — git shorthands ───────────────────────────────────
+alias gall='git add .'
+alias ga='git add'
+alias gap='git add -p'
+alias gc='git commit -m'
+alias gs='git status'
+alias gpush='git push -u origin'
+alias glog='git log --oneline --graph --decorate --color'
+alias gck='git checkout'
+alias gb='git branch'
+alias lg='lazygit'
 
-## git shorthands
-alias gall="git add ."
-alias ga="git add"
-alias gc="git commit -m"
-alias gs="git status"
-alias gpush="git push -u origin"
-alias glog="git log --oneline --graph --decorate --color"
-alias gap="git add -p"
-alias gck="git checkout"
-alias gb="git branch"
-
-## yarn
-alias y="yarn"
-
-## python3 - use Homebrew version with proper OpenSSL
+# ─── Aliases — misc tools ───────────────────────────────────────
+alias y='yarn'
 alias python3="/opt/homebrew/bin/python3.11"
 alias pip3="/opt/homebrew/bin/pip3.11"
 
-## alias for opening expo/docs directory directly
-alias ed="$HOME/Documents/GitHub/expo/docs"
-alias ex="$HOME/Documents/GitHub/expo"
+# ─── Aliases — tmux ─────────────────────────────────────────────
+alias t='tmux'
+alias ta='tmux attach'
+alias tl='tmux list-sessions'
+alias tn='tmux new-session'
+alias tk='tmux kill-session'
+alias dev='~/.setup-dev-session.sh'
+alias tmux-reload="tmux source ~/.tmux.conf && echo 'Tmux config reloaded!'"
+alias tmux-go='tmux new-session -d -s go -c ~/Code && tmux attach -t go'
+alias tmux-k8s='tmux new-session -d -s k8s -c ~/Code/k8s-rbac-audit-toolkit && tmux attach -t k8s'
 
-################ END OF FILE configs ################
+# ─── Aliases — AuditIdentity / git identity helpers ─────────────
+alias git-whoami='echo "Name: $(git config user.name)" && echo "Email: $(git config user.email)"'
+alias git-test-ai='echo "Testing AuditIdentity config..." && cd ~/work && mkdir -p test && cd test && git init &>/dev/null && git config user.email && cd .. && rm -rf test'
 
-# direnv
-eval "$(direnv hook zsh)"
+# ─── Machine-local secrets / private aliases ───────────────────
+# Azure/AKS switchers and other work-only aliases live in
+# ~/.zshrc.local (gitignored, never committed).
 
-# Starship
-# eval "$(starship init zsh)"
+# Pretty-print non-Running pods across all namespaces with reasons + colors
+alias kbadpods="kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.status.phase != \"Running\" or (.status.containerStatuses[]? | select(.state.waiting.reason != null))) | \"NS:[90m \(.metadata.namespace)[0m\nPOD:[90m \(.metadata.name)[0m\nPHASE:[33m \(.status.phase)[0m\n\" + ([.status.containerStatuses[]? | \"  [34mContainer:[0m \(.name)\n    [36mState:[0m \(.state | tojson)\n    [36mRestarts:[0m \(.restartCount)\"] | join(\"\n\")) + \"\n[90m\" + (\"-\" * 60) + \"[0m\"' | sed -E -e 's/(CrashLoopBackOff|ImagePullBackOff|Error)/\x1b[31m\1\x1b[0m/g' -e 's/(Pending)/\x1b[33m\1\x1b[0m/g' -e 's/(Restarts: [5-9])/\x1b[33m\1\x1b[0m/g'"
 
-## aks envs
-#stage
-alias gostage='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
+# ─── Dotfiles docs site (mkdocs-material) ───────────────────────
+# Serve the mkdocs site locally on :8000 from the dotfiles repo.
+docs-serve() {
+    ( cd "$HOME/.dotfiles" && mkdocs serve "$@" )
+}
+docs-build() {
+    ( cd "$HOME/.dotfiles" && mkdocs build "$@" )
+}
 
-#new prod
-alias goprod='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
+# ─── Colima (Docker/k8s VM, on-demand) ──────────────────────────
+# Why on-demand? The Colima VM holds 4-8 GB of RAM. Start when you need Docker
+# or local k8s, stop when you're done. The starship prompt shows "🐳" when it's
+# running so you always know.
+#
+# Tunables (override in ~/.zshrc.local):
+#   COLIMA_CPU=4            CPU cores for the VM
+#   COLIMA_MEM=8            memory in GB
+#   COLIMA_DISK=60          disk in GB
+#   COLIMA_K8S=true         start k3s alongside Docker
+export COLIMA_CPU="${COLIMA_CPU:-4}"
+export COLIMA_MEM="${COLIMA_MEM:-8}"
+export COLIMA_DISK="${COLIMA_DISK:-60}"
+export COLIMA_K8S="${COLIMA_K8S:-false}"
 
-#newdev
-alias gonewdev='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
-
-#dev
-alias godev='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
-
-#observe-dev
-alias gooc='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
-
-#aztoggle
-# Toggle between Azure Commercial and Azure Government
-aztoggle() {
-    GOV_TENANT="REDACTED-TENANT-ID"
-    COMM_TENANT="REDACTED-TENANT-ID"
-
-    # Detect current cloud
-    current_cloud=$(az cloud show --query name -o tsv 2>/dev/null)
-
-    if [[ -z "$current_cloud" ]]; then
-        echo "Could not detect current cloud. Defaulting to AzureCloud (commercial)."
-        current_cloud="AzureCloud"
+colima-start() {
+    if [ -S "$HOME/.colima/default/docker.sock" ]; then
+        echo "Colima already running"
+        colima status 2>&1 | grep -E "runtime|address|arch|kubernetes" || true
+        return 0
     fi
+    local k8s_flag=""
+    [[ "$COLIMA_K8S" == "true" ]] && k8s_flag="--kubernetes"
+    echo "Starting colima (cpu=$COLIMA_CPU mem=${COLIMA_MEM}G disk=${COLIMA_DISK}G k8s=$COLIMA_K8S)..."
+    colima start \
+        --cpu "$COLIMA_CPU" \
+        --memory "$COLIMA_MEM" \
+        --disk "$COLIMA_DISK" \
+        --runtime docker \
+        $k8s_flag
+}
 
-    if [[ "$current_cloud" == "AzureCloud" ]]; then
-        echo "Switching to Azure Government Cloud..."
-        az cloud set --name AzureUSGovernment
+colima-stop() {
+    if ! [ -S "$HOME/.colima/default/docker.sock" ]; then
+        echo "Colima not running"
+        return 0
+    fi
+    echo "Stopping colima..."
+    colima stop
+}
 
-        echo "Logging in to Azure Government..."
-        az login --tenant "$GOV_TENANT" --use-device-code
+colima-restart() { colima-stop && colima-start; }
 
-        echo "Now using AzureUSGovernment"
+colima-status() {
+    if [ -S "$HOME/.colima/default/docker.sock" ]; then
+        colima status
     else
-        echo "Switching to Azure Commercial Cloud..."
-        az cloud set --name AzureCloud
-
-        echo "Logging in to Azure Commercial..."
-        az login --tenant "$COMM_TENANT" --use-device-code
-
-        echo "Now using AzureCloud"
+        echo "Colima: stopped"
     fi
 }
 
+colima-ssh() { colima ssh "$@"; }
 
-#gcprod
-alias gogcprod='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
+colima-nuke() {
+    # Wipe the VM and start fresh. Useful when the VM gets into a weird state.
+    echo "WARNING: this deletes the colima VM (containers + images)"
+    read -q "?Continue? [y/N] " || { echo; return 1; }
+    echo
+    colima delete --force
+    echo "Run 'colima-start' to recreate."
+}
 
+# Aliases for common docker-via-colima operations
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dimg='docker images'
+alias dprune='docker system prune -af --volumes'
 
-#observe-dev
-alias golt='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
+# ─── Local LLM controls (used by CodeCompanion in nvim) ─────────
+# Two equivalent ways to serve a local OpenAI-compatible API:
+#   1) mlx_lm.server (CLI)   → port 8080  → use `mlx-start`
+#   2) LM Studio (GUI)       → port 1234  → start the server in-app, then `ai-use-lmstudio`
+# CodeCompanion reads $AI_LLM_URL (default http://127.0.0.1:8080) so flipping is one env var.
+#
+# Set MLX_MODEL_PATH in ~/.zshrc.local to point at your downloaded Gemma 3 MoE.
+export AI_LLM_URL="${AI_LLM_URL:-http://127.0.0.1:8080}"
+export AI_LLM_MODEL="${AI_LLM_MODEL:-gemma-3-moe}"
 
-#sandbox
-alias gosandbox='echo "Setting Azure subscription..." && az account set --subscription REDACTED-SUBSCRIPTION-ID && echo "Getting AKS credentials..." && az aks get-credentials --resource-group REDACTED --name REDACTED --overwrite-existing && echo "Converting kubeconfig..." && kubelogin convert-kubeconfig -l azurecli && echo "Done!"'
-# rbenv
-#eval "$(rbenv init -)"
+mlx-start() {
+    local model="${1:-${MLX_MODEL_PATH:-mlx-community/gemma-3-27b-it-mlx}}"
+    echo "Starting MLX server with model: $model"
+    echo "  endpoint: http://127.0.0.1:8080"
+    echo "  stop with: mlx-stop  (or Ctrl-C)"
+    mlx_lm.server --model "$model" --host 127.0.0.1 --port 8080
+}
+mlx-stop() {
+    if pkill -f "mlx_lm.server"; then
+        echo "MLX server stopped"
+    else
+        echo "No MLX server running"
+    fi
+}
+mlx-status() {
+    if pgrep -f "mlx_lm.server" >/dev/null; then
+        echo "MLX server: running (pid $(pgrep -f mlx_lm.server | head -1))"
+    else
+        echo "MLX server: stopped"
+    fi
+}
 
-alias kbadpods="kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.status.phase != \"Running\" or (.status.containerStatuses[]? | select(.state.waiting.reason != null))) | \"NS:\u001b[90m \(.metadata.namespace)\u001b[0m\nPOD:\u001b[90m \(.metadata.name)\u001b[0m\nPHASE:\u001b[33m \(.status.phase)\u001b[0m\n\" + ([.status.containerStatuses[]? | \"  \u001b[34mContainer:\u001b[0m \(.name)\n    \u001b[36mState:\u001b[0m \(.state | tojson)\n    \u001b[36mRestarts:\u001b[0m \(.restartCount)\"] | join(\"\n\")) + \"\n\u001b[90m\" + (\"-\" * 60) + \"\u001b[0m\"' | sed -E -e 's/(CrashLoopBackOff|ImagePullBackOff|Error)/\x1b[31m\1\x1b[0m/g' -e 's/(Pending)/\x1b[33m\1\x1b[0m/g' -e 's/(Restarts: [5-9])/\x1b[33m\1\x1b[0m/g'"
+# Quick switchers between the two backends for the current shell.
+ai-use-mlx()      { export AI_LLM_URL="http://127.0.0.1:8080"; echo "AI backend → mlx_lm.server (8080)"; }
+ai-use-lmstudio() { export AI_LLM_URL="http://127.0.0.1:1234"; echo "AI backend → LM Studio (1234)"; }
+ai-status() {
+    echo "AI_LLM_URL=$AI_LLM_URL"
+    echo "AI_LLM_MODEL=$AI_LLM_MODEL"
+    if curl -fsS "$AI_LLM_URL/v1/models" >/dev/null 2>&1; then
+        echo "endpoint: ✓ reachable"
+    else
+        echo "endpoint: ✗ unreachable (start mlx-start or LM Studio's local server)"
+    fi
+}
 
+# ─── fzf shell keybindings (Ctrl-R / Ctrl-T / Alt-C) ─────────────
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
-# Added by Windsurf
-export PATH="/Users/jay/.codeium/windsurf/bin:$PATH"
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-# AuditIdentity Git aliases
-alias git-whoami='echo "Name: $(git config user.name)" && echo "Email: $(git config user.email)"'
-alias git-test-ai='echo "Testing AuditIdentity config..." && cd ~/work && mkdir -p test && cd test && git init &>/dev/null && git config user.email && cd .. && rm -rf test'
-alias cdai='cd ~/work/auditidentity'
-
-
-# Tmux Aliases - Modern Development Setup
-alias t="tmux"
-alias ta="tmux attach"
-alias tl="tmux list-sessions"
-alias tn="tmux new-session"
-alias tk="tmux kill-session"
-alias dev="~/.setup-dev-session.sh"
-alias tmux-reload="tmux source ~/.tmux.conf && echo 'Tmux config reloaded!'"
-
-# Quick tmux sessions for different projects
-alias tmux-go="tmux new-session -d -s go -c ~/Code && tmux attach -t go"
-alias tmux-k8s="tmux new-session -d -s k8s -c ~/Code/k8s-rbac-audit-toolkit && tmux attach -t k8s"
-
-export PATH="$HOME/.local/bin:$PATH"
-
-# ── Machine-local secrets and overrides (not in git) ─────────────
+# ─── Machine-local secrets and overrides (not in git) ────────────
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

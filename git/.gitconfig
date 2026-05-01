@@ -5,6 +5,23 @@
 [user]
 	name = Jay German
 	email = jay.german@armada.ai
+[core]
+	pager = delta
+	editor = nvim
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	syntax-theme = TwoDark
+	hyperlinks = true
+	hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[merge]
+	conflictstyle = zdiff3
+[diff]
+	colorMoved = default
+	algorithm = histogram
 [oh-my-zsh]
 	git-commit-alias = 061f773dd356df52a8bccd5e73377c012f97ef14
 [alias]

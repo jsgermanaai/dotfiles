@@ -21,3 +21,6 @@ Thumbs.db
 
 # Homebrew lock
 Brewfile.lock.json
+
+# mkdocs-material build output
+site/

@@ -1,0 +1,70 @@
+/* Cobalt + Magenta palette for mkdocs-material — matches the dotfiles theme. */
+
+:root,
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #2D5BFF;   /* cobalt */
+  --md-primary-fg-color--light: #3B82F6;
+  --md-primary-fg-color--dark:  #0050E0;
+
+  --md-accent-fg-color:         #FF1FE7;   /* magenta */
+  --md-accent-fg-color--transparent: rgba(255, 31, 231, 0.1);
+
+  --md-default-bg-color:        #000000;   /* pure black */
+  --md-default-bg-color--light: #0a0a14;
+  --md-default-fg-color:        #e0e0ee;
+
+  --md-code-bg-color:           #0a0a14;
+  --md-code-fg-color:           #e0e0ee;
+
+  --md-typeset-a-color:         #2D5BFF;
+  --md-typeset-mark-color:      rgba(255, 31, 231, 0.25);
+
+  --md-footer-bg-color:         #0a0a14;
+  --md-footer-bg-color--dark:   #000000;
+}
+
+/* Light scheme — invert the palette but keep cobalt/magenta accents. */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #2D5BFF;
+  --md-accent-fg-color:         #FF1FE7;
+}
+
+/* Tighter type, brighter accent links. */
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+  text-decoration: underline wavy var(--md-accent-fg-color);
+}
+
+/* Magenta border on focused/active elements. */
+.md-search__input:focus,
+.md-tabs__link--active {
+  border-bottom-color: var(--md-accent-fg-color);
+}
+
+/* Code-block accents */
+.md-typeset code {
+  border: 1px solid rgba(45, 91, 255, 0.3);
+  background: var(--md-code-bg-color);
+}
+
+/* Admonitions get a cobalt left border by default, magenta for warnings. */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left-color: var(--md-primary-fg-color);
+}
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-left-color: var(--md-accent-fg-color);
+}
+
+/* Header matches the prompt's grey separator. */
+.md-header {
+  background: var(--md-default-bg-color--light);
+  border-bottom: 1px solid #6b7280;
+}
+
+/* Selection highlight. */
+::selection {
+  background: var(--md-accent-fg-color);
+  color: #000000;
+}

@@ -189,6 +189,22 @@ else
     ok "NVM already installed"
 fi
 
+# ─── mkdocs (for the docs site under docs/) ────────────────────
+section "Documentation site (mkdocs-material)"
+if command -v pipx &>/dev/null; then
+    if ! pipx list 2>/dev/null | grep -q "mkdocs-material"; then
+        info "Installing mkdocs-material via pipx..."
+        # --include-deps is required because mkdocs-material has no top-level
+        # binaries; the actual `mkdocs` binary comes from the dependency.
+        pipx install mkdocs-material --include-deps 2>/dev/null \
+            || warn "mkdocs-material install failed (run 'pipx install mkdocs-material --include-deps' later)"
+    else
+        ok "mkdocs-material already installed"
+    fi
+else
+    warn "pipx not found — skipping mkdocs install"
+fi
+
 # ─── MLX (local LLM for nvim AI) ────────────────────────────────
 section "AI (local LLM)"
 if command -v pipx &>/dev/null; then

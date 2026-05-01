@@ -1,0 +1,30 @@
+gui:
+  theme:
+    activeBorderColor:
+      - "#FF1FE7"
+      - bold
+    inactiveBorderColor:
+      - "#6b7280"
+    optionsTextColor:
+      - "#2D5BFF"
+    selectedLineBgColor:
+      - "#0a0a14"
+    cherryPickedCommitBgColor:
+      - "#FF1FE7"
+    cherryPickedCommitFgColor:
+      - "#000000"
+    unstagedChangesColor:
+      - "#FF4D4D"
+    defaultFgColor:
+      - "#e0e0ee"
+  showFileTree: true
+  showCommandLog: false
+  nerdFontsVersion: "3"
+  showIcons: true
+git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never --side-by-side
+  parseEmoji: true
+os:
+  editPreset: nvim

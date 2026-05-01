@@ -1,0 +1,111 @@
+site_name: dotfiles
+site_description: A neon-cobalt + magenta development environment for macOS
+site_author: Jay German
+site_url: ""
+
+# Use the docs/ directory as the source for the site.
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+# ─── Theme ─────────────────────────────────────────────────────
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode (overrides palette)
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Dark mode (cobalt + magenta)
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+    annotation: material/arrow-right-circle
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+# ─── Plugins ───────────────────────────────────────────────────
+plugins:
+  - search
+
+# ─── Markdown extensions (full Material feature set) ──────────
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: ➜
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.caret
+
+# ─── Custom CSS for cobalt + magenta palette ──────────────────
+extra_css:
+  - stylesheets/cobalt.css
+
+# ─── Navigation ────────────────────────────────────────────────
+nav:
+  - Home: index.md
+  - Getting started:
+      - Install: install.md
+      - Color palette: palette.md
+  - Shell:
+      - Prompt (starship): prompt.md
+      - CLI tools: cli.md
+      - fzf shortcuts: fzf.md
+  - Editor:
+      - Neovim: nvim.md
+      - Local AI: ai.md
+  - Tooling:
+      - Tmux: tmux.md
+      - Git: git.md
+      - Lazygit: lazygit.md
+      - Colima (Docker/k8s): colima.md
+  - Reference:
+      - Repository layout: layout.md
+      - Caveats & gotchas: caveats.md

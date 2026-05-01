@@ -1,3 +1,5 @@
+Include /Users/jay/.colima/ssh_config
+
 # SSH Configuration for Multiple GitHub Accounts
 
 # AuditIdentity Business Account
