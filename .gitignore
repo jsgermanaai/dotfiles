@@ -24,3 +24,8 @@ Brewfile.lock.json
 
 # mkdocs-material build output
 site/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
