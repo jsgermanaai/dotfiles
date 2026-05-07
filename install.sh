@@ -28,12 +28,13 @@ for arg in "$@"; do
 done
 
 # ─── Resolve repo location ──────────────────────────────────────
-# Default to ~/.dotfiles. If $DOTFILES is overridden, honor it.
+# Default to the directory containing this script (the actual checkout),
+# so `./install.sh` works from any location. Honor $DOTFILES if set.
 # Either way, ensure ~/.dotfiles exists (as dir or symlink) so anything
 # that hardcoded ~/.dotfiles still resolves.
-DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES="${DOTFILES:-$SCRIPT_DIR}"
 
-# If the override points elsewhere and ~/.dotfiles is missing, bridge it.
 if [ ! -e "$HOME/.dotfiles" ] && [ "$DOTFILES" != "$HOME/.dotfiles" ]; then
     ln -s "$DOTFILES" "$HOME/.dotfiles"
 fi
