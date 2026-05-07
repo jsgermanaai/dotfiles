@@ -69,3 +69,6 @@ _Add a brief overview of your project architecture_
 ## Conventions & Patterns
 
 _Add your project-specific conventions here_
+
+<!-- Flagship opt-in — added by flagship-project on (2026-05-06) -->
+@/Users/jsgerman/code/Personal/flagship-system/CLAUDE.md
